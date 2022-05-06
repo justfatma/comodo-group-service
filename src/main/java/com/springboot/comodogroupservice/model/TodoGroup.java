@@ -14,7 +14,7 @@ public class TodoGroup {
   private Long id;
   private String name;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   private TodoUser todoUser;
 
   public Long getId() {
