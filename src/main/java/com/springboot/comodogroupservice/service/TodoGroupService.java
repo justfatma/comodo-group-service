@@ -27,7 +27,7 @@ public class TodoGroupService {
     if (groupOp.isPresent()) {
       return fromEntityToModel(groupOp.get());
     } else {
-      throw new ResourceNotFoundException("getGroupById groupId:" + groupId);
+      return null;
     }
   }
 

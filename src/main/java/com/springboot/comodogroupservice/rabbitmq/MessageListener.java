@@ -16,7 +16,7 @@ public class MessageListener {
 
   @RabbitListener(queues = MQConfig.QUEUE)
   public void listener(UserMessage message) {
-    System.out.println(message);
+    System.out.println("message***********************************************: " + message);
 
     TodoUser todoUser = fromModelToEntity(message.getTodoUserIO());
     userRepository.save(todoUser);
@@ -27,7 +27,11 @@ public class MessageListener {
   private TodoUser fromModelToEntity(TodoUserIO userIO) {
 
     TodoUser user = new TodoUser();
-    user.setId(userIO.getId());
+
+    if (userIO.getId() != null) {
+      user.setId(userIO.getId());
+    }
+
     user.setName(userIO.getName());
     user.setEmail(userIO.getEmail());
     user.setPassword(userIO.getPassword());
